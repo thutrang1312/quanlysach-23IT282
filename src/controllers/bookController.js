@@ -3,7 +3,7 @@ const { BookRead, BookWrite } = require('../models/bookModel');
 const MSSV = process.env.MSSV || '23IT282';
 const HO_TEN = 'Trần Thị Thu Trang';
 const PRODUCT_PREFIX = process.env.PRODUCT_PREFIX || '282';
-const VAT_RATE = parseFloat(process.env.VAT_RATE) || 7;
+const VAT_RATE = parseFloat(process.env.VAT_RATE) || 6;
 
 // 1. Hàm getBooks (Dùng cho luồng READ)
 exports.getBooks = async (req, res) => {
