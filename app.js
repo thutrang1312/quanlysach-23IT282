@@ -26,7 +26,8 @@ app.use(
         saveUninitialized: false,
         store: MongoStore.create({
             mongoUrl: process.env.MONGODB_WRITE_URI,
-            collectionName: 'sessions'
+            collectionName: 'sessions',
+            autoRemove: 'disabled'
         }),
         cookie: { maxAge: 1000 * 60 * 60 * 24 } // Thời hạn session: 1 ngày
     })
