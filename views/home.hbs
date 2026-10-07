@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Sách Cloud</title>
+</head>
+<body style="font-family: Arial; margin: 30px;">
+    <h1>Quản Lý Sách Cloud</h1>
+    <p><strong>Lượt truy cập Session:</strong> {{sessionViews}}</p>
+
+    <form action="/add-book" method="POST" style="background: #f4f4f4; padding: 15px; width: 300px;">
+        <h3>Thêm Sách Mới</h3>
+        <input type="text" name="code" placeholder="Mã sách (Tiền tố {{studentInfo.prefix}})" required><br><br>
+        <input type="text" name="name" placeholder="Tên sách" required><br><br>
+        <input type="number" name="price" placeholder="Giá gốc" required><br><br>
+        <button type="submit">Thêm Sách</button>
+    </form>
+
+    <h2>Danh Sách Sản Phẩm</h2>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr><th>Mã Sách</th><th>Tên Sách</th><th>Giá Gốc</th><th>Giá Sau Thuế (VAT {{studentInfo.vat}}%)</th></tr>
+        </thead>
+        <tbody>
+            {{#each books}}
+            <tr>
+                <td>{{this.code}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.basePrice}}</td>
+                <td><strong>{{this.finalPrice}}</strong></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <footer style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 10px;">
+        <p><strong>Họ và tên:</strong> {{studentInfo.hoTen}}</p>
+        <p><strong>MSSV:</strong> {{studentInfo.mssv}}</p>
+        <p><strong>Mức VAT áp dụng:</strong> {{studentInfo.vat}}%</p>
+    </footer>
+</body>
+</html>
